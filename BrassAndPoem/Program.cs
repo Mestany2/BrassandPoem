@@ -51,7 +51,7 @@ List<ProductType> productTypes = new List<ProductType>()
 
 //put your greeting here
 string greeting = @"Welcome to Brass & Poem 
-No.1 Shop in TN";
+Nubmer 1 Shop in TN";
 Console.WriteLine(greeting);
 //implement your loop here
 
