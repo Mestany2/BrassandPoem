@@ -87,7 +87,7 @@ void DisplayMenu()
         }
         else if (choice == "4")
         {
-            Console.WriteLine("update Products Here!");
+            UpdateProduct(products, productTypes);
         }
         else if (choice == "5")
         {
@@ -111,6 +111,7 @@ void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
         var query =from pt in productTypes where products[i].ProductTypeId == pt.Id
                     select new { pt.Title };
         var productType=query.First();
+        //var Value= productTypes.First(p=> p.Id == products[i].ProductTypeId);
         Console.WriteLine($"{i + 1} . {products[i].Name} that costs {products[i].Price} that is type {productType.Title}");
 
     }
@@ -150,11 +151,39 @@ void AddProduct(List<Product> products, List<ProductType> productTypes)
       ProductTypeId = ProductTypeid    
     }; 
     products.Add(newProduct);
+    Console.WriteLine("Thank you for adding a product.Product has been added");
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    for (int i = 0; i < products.Count; i++)
+    {
+        var query = from pt in productTypes
+                    where products[i].ProductTypeId == pt.Id
+                    select new { pt.Title };
+        var productType = query.First();
+        //var Value= productTypes.First(p=> p.Id == products[i].ProductTypeId);
+        Console.WriteLine($"{i + 1} . {products[i].Name}");
+
+    }
+    Console.WriteLine("Select the product you would like to update :");
+    int updateProduct = int.Parse(Console.ReadLine());
+    Product selectedProduct = products[updateProduct - 1];
+    Console.WriteLine($"You Selected {selectedProduct.Name} that costs {selectedProduct.Price} and it's Product type id is {selectedProduct.ProductTypeId}");
+    Console.WriteLine("Update the product name ");
+    string Name = Console.ReadLine();
+    products[updateProduct - 1].Name = Name;
+    Console.WriteLine("Update the product's price");
+    decimal Price = decimal.Parse(Console.ReadLine());
+    products[updateProduct - 1].Price = Price;
+    Console.WriteLine("Update the product's type");
+    int ProductTypeId = int.Parse(Console.ReadLine());
+    products[updateProduct - 1].ProductTypeId  = ProductTypeId;
+
+    Console.WriteLine("Here is your updated list");
+    DisplayAllProducts(products, productTypes);
+
+
 }
 
 // don't move or change this!
