@@ -83,7 +83,7 @@ void DisplayMenu()
         }
         else if (choice == "3")
         {
-            Console.WriteLine("Add Products Here!");
+            AddProduct( products, productTypes);
         }
         else if (choice == "4")
         {
@@ -134,7 +134,22 @@ void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("Enter a product name ");
+    string Name = Console.ReadLine();
+    Console.WriteLine("Enter the product's price");
+    decimal Price = decimal.Parse(Console.ReadLine());
+    Console.WriteLine("Select a product type");
+    for(int i=0; i<productTypes.Count; i++ )
+    {
+        Console.WriteLine($"{i+1}. {productTypes[i].Title}");
+    }
+    int ProductTypeid= int.Parse(Console.ReadLine());
+    Product newProduct = new Product
+    { Name = Name,
+      Price = Price,
+      ProductTypeId = ProductTypeid    
+    }; 
+    products.Add(newProduct);
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
