@@ -78,7 +78,7 @@ void DisplayMenu()
         }
         else if (choice == "2")
         {
-            Console.WriteLine("Delete Products Here!");
+            DeleteProduct( products, productTypes);
 
         }
         else if (choice == "3")
@@ -118,7 +118,18 @@ void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
 
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    DisplayAllProducts( products, productTypes);
+    Console.WriteLine("Select a product you wish to delete");
+
+    int removeProduct =  Convert.ToInt32(Console.ReadLine());
+
+    if(removeProduct == 0 )
+    { Console.WriteLine("Please select a product between 1-5");}
+    else
+    {
+        products.RemoveAt(removeProduct-1);
+    }
+
 }
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
