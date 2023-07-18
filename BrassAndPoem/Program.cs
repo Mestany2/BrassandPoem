@@ -63,7 +63,7 @@ DisplayMenu();
 void DisplayMenu()
 {
     string choice = null;
-    while (choice != "0")
+    while (choice != "5")
     {
         Console.WriteLine(@"Choose an option:
    1. Display all products
