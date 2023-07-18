@@ -54,10 +54,46 @@ string greeting = @"Welcome to Brass & Poem
 Nubmer 1 Shop in TN";
 Console.WriteLine(greeting);
 //implement your loop here
+DisplayMenu();
 
 void DisplayMenu()
 {
-    throw new NotImplementedException();
+    string choice = null;
+    while (choice != "0")
+    {
+        Console.WriteLine(@"Choose an option:
+   1. Display all products
+   2. Delete a product
+   3. Add a new product
+   4. Update product properties
+   5. Exit");
+        choice = Console.ReadLine();
+        if (choice == "1")
+        {
+            Console.WriteLine("Display Products Here!");
+        }
+        else if (choice == "2")
+        {
+            Console.WriteLine("Delete Products Here!");
+
+        }
+        else if (choice == "3")
+        {
+            Console.WriteLine("Add Products Here!");
+        }
+        else if (choice == "4")
+        {
+            Console.WriteLine("update Products Here!");
+        }
+        else if (choice == "5")
+        {
+            Console.WriteLine("GoodBye!");
+        }
+        else if (choice != "1" || choice != "2" || choice != "3" || choice != "4" || choice != "5")
+        {
+            Console.WriteLine("Please choose an existing menu item!");
+        }
+    }
 }
 
 void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
