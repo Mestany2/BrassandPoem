@@ -1,5 +1,9 @@
 ﻿
 //create a "products" variable here to include at least five Product instances. Give them appropriate ProductTypeIds.
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
 List<Product> products = new List<Product>()
 {
     new Product()
@@ -70,7 +74,7 @@ void DisplayMenu()
         choice = Console.ReadLine();
         if (choice == "1")
         {
-            Console.WriteLine("Display Products Here!");
+            DisplayAllProducts( products, productTypes);
         }
         else if (choice == "2")
         {
@@ -98,7 +102,18 @@ void DisplayMenu()
 
 void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("List of Products: ");
+
+
+  
+    for ( int i=0; i<products.Count; i++ )
+    {
+        var query =from pt in productTypes where products[i].ProductTypeId == pt.Id
+                    select new { pt.Title };
+        var productType=query.First();
+        Console.WriteLine($"{i + 1} . {products[i].Name} that costs {products[i].Price} that is type {productType.Title}");
+
+    }
 }
 
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
