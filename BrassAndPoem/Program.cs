@@ -67,11 +67,11 @@ void DisplayMenu()
     while (choice != "5")
     {
         Console.WriteLine(@"Choose an option:
-   1. Display all products
-   2. Delete a product
-   3. Add a new product
-   4. Update product properties
-   5. Exit");
+1. Display all products
+2. Delete a product
+3. Add a new product
+4. Update product properties
+5. Exit");
         choice = Console.ReadLine();
         if (choice == "1")
         {
