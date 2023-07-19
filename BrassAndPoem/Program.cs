@@ -94,7 +94,7 @@ void DisplayMenu()
         {
             Console.WriteLine("GoodBye!");
         }
-        else if (choice != "1" || choice != "2" || choice != "3" || choice != "4" || choice != "5")
+        else if (choice != "1" || choice != "2" || choice != "3" || choice != "4" || choice != "5" || choice == null)
         {
             Console.WriteLine("Please choose an existing menu item!");
         }
