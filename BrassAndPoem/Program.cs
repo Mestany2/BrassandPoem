@@ -67,11 +67,11 @@ void DisplayMenu()
     while (choice != "5")
     {
         Console.WriteLine(@"Choose an option:
-   1. Display all products
-   2. Delete a product
-   3. Add a new product
-   4. Update product properties
-   5. Exit");
+1. Display all products
+2. Delete a product
+3. Add a new product
+4. Update product properties
+5. Exit");
         choice = Console.ReadLine();
         if (choice == "1")
         {
@@ -94,7 +94,7 @@ void DisplayMenu()
         {
             Console.WriteLine("GoodBye!");
         }
-        else if (choice != "1" || choice != "2" || choice != "3" || choice != "4" || choice != "5")
+        else if (choice != "1" || choice != "2" || choice != "3" || choice != "4" || choice != "5" || choice == null)
         {
             Console.WriteLine("Please choose an existing menu item!");
         }
@@ -163,7 +163,7 @@ void UpdateProduct(List<Product> products, List<ProductType> productTypes)
                     where products[i].ProductTypeId == pt.Id
                     select new { pt.Title };
         var productType = query.First();
-        //var Value= productTypes.First(p=> p.Id == products[i].ProductTypeId);
+        //Antoher way var Value= productTypes.First(p=> p.Id == products[i].ProductTypeId);
         Console.WriteLine($"{i + 1} . {products[i].Name}");
 
     }
