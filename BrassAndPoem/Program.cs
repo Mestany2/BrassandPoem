@@ -163,7 +163,7 @@ void UpdateProduct(List<Product> products, List<ProductType> productTypes)
                     where products[i].ProductTypeId == pt.Id
                     select new { pt.Title };
         var productType = query.First();
-        //var Value= productTypes.First(p=> p.Id == products[i].ProductTypeId);
+        //Antoher way var Value= productTypes.First(p=> p.Id == products[i].ProductTypeId);
         Console.WriteLine($"{i + 1} . {products[i].Name}");
 
     }
