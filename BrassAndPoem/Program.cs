@@ -1,6 +1,7 @@
 ﻿
 //create a "products" variable here to include at least five Product instances. Give them appropriate ProductTypeIds.
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection;
 
@@ -172,13 +173,32 @@ void UpdateProduct(List<Product> products, List<ProductType> productTypes)
     Console.WriteLine($"You Selected {selectedProduct.Name} that costs {selectedProduct.Price} and it's Product type id is {selectedProduct.ProductTypeId}");
     Console.WriteLine("Update the product name ");
     string Name = Console.ReadLine();
-    products[updateProduct - 1].Name = Name;
+    if ( string.IsNullOrEmpty(Name)) {
+        products[updateProduct - 1].Name = products[updateProduct - 1].Name;
+    } else {
+        products[updateProduct - 1].Name = Name;
+    }
     Console.WriteLine("Update the product's price");
-    decimal Price = decimal.Parse(Console.ReadLine());
-    products[updateProduct - 1].Price = Price;
+    try
+    {
+        decimal Price = decimal.Parse(Console.ReadLine());
+        products[updateProduct - 1].Price = Price;
+    }
+    catch(FormatException)
+    {
+        products[updateProduct - 1].Price = products[updateProduct - 1].Price;
+    }
     Console.WriteLine("Update the product's type");
-    int ProductTypeId = int.Parse(Console.ReadLine());
-    products[updateProduct - 1].ProductTypeId  = ProductTypeId;
+    try
+    {
+        int ProductTypeId = int.Parse(Console.ReadLine());
+        products[updateProduct - 1].ProductTypeId = ProductTypeId;
+    }
+    catch (FormatException) 
+    {
+        products[updateProduct - 1].ProductTypeId = products[updateProduct - 1].ProductTypeId;
+    }
+   
 
     Console.WriteLine("Here is your updated list");
     DisplayAllProducts(products, productTypes);
